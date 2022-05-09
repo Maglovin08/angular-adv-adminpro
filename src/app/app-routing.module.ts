@@ -17,15 +17,6 @@ const routes: Routes =[
   //path: '/dashboard' PagesRouting
   //path: '/auth' AuthRouting
 
-  
-  {
-    path:'',
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-  },
-  {
-    path:'',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
   {path: '', redirectTo: '/dashboard', pathMatch:'full'},
   {path: '**', component: NopagefoundComponent},
 ];
