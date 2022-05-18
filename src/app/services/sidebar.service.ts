@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,28 +6,34 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  menu: any[] = [
-    {
-      titulo: 'Dashboard',
-      icono: 'mdi mdi-gauge',
-      submenu:[
-        {titulo: 'Main', url:'/'},
-        {titulo: 'Gráficas', url:'grafica1'},
-        {titulo: 'ProgressBar', url:'progress'},
-        {titulo: 'Promesas', url:'promesa'},
-        {titulo: 'Rxjs', url:'rxjs'},
-      ]
-    },
-    {
-      titulo: 'Mantenimiento',
-      icono: 'mdi mdi-folder-lock-open',
-      submenu:[
-        {titulo: 'Usuarios', url:'usuarios'},
-        {titulo: 'Hospitales', url:'hospitales'},
-        {titulo: 'Médicos', url:'medicos'},
-      ]
-    }
-  ]
+  public menu: any[] = [];
 
-  constructor() { }
+  cargarMenu(){
+
+    this.menu = JSON.parse( localStorage.getItem('menu')!) || [];
+
+  }
+
+  //menu: any[] = [
+  //  {
+  //    titulo: 'Dashboard',
+  //    icono: 'mdi mdi-gauge',
+  //    submenu:[
+  //      {titulo: 'Main', url:'/'},
+  //      {titulo: 'Gráficas', url:'grafica1'},
+  //      {titulo: 'ProgressBar', url:'progress'},
+  //      {titulo: 'Promesas', url:'promesa'},
+  //      {titulo: 'Rxjs', url:'rxjs'},
+  //    ]
+  //  },
+  //  {
+  //    titulo: 'Mantenimiento',
+  //    icono: 'mdi mdi-folder-lock-open',
+  //    submenu:[
+  //      {titulo: 'Usuarios', url:'usuarios'},
+  //      {titulo: 'Hospitales', url:'hospitales'},
+  //      {titulo: 'Médicos', url:'medicos'},
+  //    ]
+  //  }
+  //];
 }
