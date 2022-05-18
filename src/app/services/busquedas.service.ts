@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 import { map } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
+import { Hospital } from '../models/hospital.model';
+import { Medicos } from '../models/medico.model';
 
 const base_url = environment.base_url;
 
@@ -30,6 +32,13 @@ private transformarUsuarios( resultados: any[] ): Usuario[]{
       user => new Usuario(user.nombre, user.email, '', user.img, user.role,user.uid,user.google)
   );
 }
+private transformarHospital( resultados: any[] ): Hospital[]{
+  return resultados
+}
+
+private transformarMedico( resultados: any[] ): Medicos[]{
+  return resultados
+}
 
   buscar( tipo: 'usuarios' | 'medicos' | 'hospitales',
           termino: string ){
@@ -43,6 +52,12 @@ private transformarUsuarios( resultados: any[] ): Usuario[]{
                     switch ( tipo ) {
                       case 'usuarios':
                         return this.transformarUsuarios( resp.resultados );
+                      
+                      case 'hospitales':
+                        return this.transformarHospital( resp.resultados );
+
+                      case 'medicos':
+                        return this.transformarMedico( resp.resultados );
                     
                       default:
                         return [];

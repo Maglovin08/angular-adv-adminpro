@@ -5,6 +5,8 @@ import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { BusquedasService } from '../../../services/busquedas.service';
 import Swal from 'sweetalert2';
+import { Subscription, delay } from 'rxjs';
+import { Hospital } from 'src/app/models/hospital.model';
 
 @Component({
   selector: 'app-usuarios',
@@ -17,6 +19,7 @@ export class UsuariosComponent implements OnInit {
   public totalUsuarios: number = 0;
   public usuarios: Usuario[] = [];
   public usuariosTemp: Usuario[] = [];
+  public imgSubs!: Subscription;
 
   public desde: number = 0;
   public cargando: boolean = true;
@@ -66,8 +69,8 @@ export class UsuariosComponent implements OnInit {
     }
 
     this.busquedasService.buscar('usuarios', termino)
-              .subscribe( resultados => {
-                this.usuarios = resultados
+              .subscribe( resultados=> {
+                this.usuarios = resultados as Usuario[];
               });
   }
   eliminarUsuario( usuario: Usuario ){
@@ -108,7 +111,6 @@ export class UsuariosComponent implements OnInit {
 
   abrirModal(usuario: Usuario){
 
-    console.log(usuario);
     this.modalImagenService.abrirModal('usuarios', usuario.uid!, usuario.img);
 
   }

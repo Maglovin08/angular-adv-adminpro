@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PipesModule } from '../pipes/pipes.module';
 
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
@@ -16,6 +17,10 @@ import { PromesaComponent } from './promesas/promesa/promesa.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+
 
 
 
@@ -32,7 +37,10 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     PromesaComponent,
     RxjsComponent,
     PerfilComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent
   ],
   exports:[
     DashboardComponent,
@@ -48,7 +56,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
           PagesRoutingModule,
           FormsModule,
           ComponentsModule,
-          ReactiveFormsModule
+          ReactiveFormsModule,
+          PipesModule
       ]
 })
 export class PagesModule { }
